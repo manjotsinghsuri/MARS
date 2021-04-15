@@ -1,0 +1,41 @@
+<?xml version='1.0'?>
+
+<robot name="name" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name='robot_footprint'> </link>
+
+  <joint name="robot_footprint_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="robot_footprint"/>
+    <child link="robot_body" />
+  </joint>
+
+  <link name='robot_body'>
+    <pose>0 0 0 0 0 0</pose>
+
+    <inertial>
+      <mass value="1e-5"/>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <inertia
+          ixx="1e-6" ixy="0" ixz="0"
+          iyy="1e-6" iyz="0"
+          izz="1e-6"
+      />
+    </inertial>
+
+    <collision name='robot_collision'>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/> 
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual name='robot_visual'>
+      <origin xyz="0 0 0" rpy=" 0 0 0"/>
+      <geometry>
+        <mesh filename="package://robot/meshes/Dingo_without_tyre.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+</robot>

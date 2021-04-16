@@ -14,7 +14,7 @@
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
-      <mass value="5e-5"/>
+      <mass value="9"/>
       <origin xyz="0 0 0.5" rpy=" 1.5707 0 1.5707"/>
       <inertia
           ixx="1e-6" ixy="0" ixz="0"
@@ -42,7 +42,7 @@
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
-      <mass value="8.0"/>
+      <mass value="0.05"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"
@@ -71,7 +71,7 @@
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
-      <mass value="8"/>
+      <mass value="0.05"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <inertia
           ixx="0.1" ixy="0" ixz="0"
@@ -95,7 +95,7 @@
     </visual>
   </link>
   
-  <link name='camera_pillar'>
+  <!-- <link name='camera_pillar'>
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
@@ -121,7 +121,7 @@
         <box size="0.05 0.05 0.2"/>
       </geometry>
     </visual>
-  </link>
+  </link>-->
 
   <joint type="continuous" name="left_wheel_hinge">
     <origin xyz="-0.107266 -0.242145 0.5" rpy=" 0 -1.5707 1.5707"/>
@@ -141,13 +141,13 @@
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
-  <joint type="fixed" name="camera_pillar_hinge">
+  <!-- <joint type="fixed" name="camera_pillar_hinge">
     <origin xyz="-0.182538 0.002574 0.674205" rpy="-0.000428 0.002653 -0.024756"/>
     <child link="camera_pillar"/>
     <parent link="robot_body"/>
     <axis xyz="0 0 1" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
-  </joint>
+  </joint>-->
 
 </robot>

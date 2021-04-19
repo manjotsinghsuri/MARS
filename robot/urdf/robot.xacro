@@ -1,6 +1,10 @@
 <?xml version='1.0'?>
 
 <robot name="name" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
 
   <link name='robot_footprint'> </link>
 
@@ -15,7 +19,7 @@
 
     <inertial>
       <mass value="9"/>
-      <origin xyz="0 0 0.5" rpy=" 1.5707 0 1.5707"/>
+      <origin xyz="0 0 0" rpy=" 1.5707 0 1.5707"/>
       <inertia
           ixx="0.4298" ixy="0" ixz="0"
           iyy="0.207" iyz="0"
@@ -24,17 +28,17 @@
     </inertial>
 
     <collision name='robot_collision'>
-      <origin xyz="0 0 0.5" rpy=" 1.5707 0 1.5707"/>
+      <origin xyz="0 0 0" rpy=" 1.5707 0 1.5707"/>
       <geometry>
         <!--<box size="1.0 1.0 1.0"/>-->
-        <mesh filename="package://robot/meshes/Dingo_without_tyre.dae"/>
+        <mesh filename="package://robot/meshes/dingo_for_omni.dae"/>
       </geometry>
     </collision>
 
     <visual name='robot_visual'>
-      <origin xyz="0 0 0.5" rpy=" 1.5707 0 1.5707"/>
+      <origin xyz="0 0 0" rpy=" 1.5707 0 1.5707"/>
       <geometry>
-        <mesh filename="package://robot/meshes/Dingo_without_tyre.dae"/>
+        <mesh filename="package://robot/meshes/dingo_for_omni.dae"/>
       </geometry>
     </visual>
   </link>
@@ -64,6 +68,7 @@
       <geometry>
         <cylinder radius="0.05" length="0.015"/>
       </geometry>
+      <material name="black"/>
     </visual>
   </link>
     
@@ -93,37 +98,39 @@
       <geometry>
         <cylinder radius="0.05" length="0.015"/>
       </geometry>
+      <material name="black"/>
     </visual>
   </link>
   
-  <link name='camera_pillar'>
+  <link name='omni_wheel'>
     <pose>0 0 0 0 0 0</pose>
 
     <inertial>
-      <mass value="0.2"/>
+      <mass value="0.35"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <inertia
-          ixx="0.0001979" ixy="0" ixz="0"
-          iyy="0.0001979" iyz="0"
-          izz="0.0000625"
+          ixx="0.0056" ixy="0" ixz="0"
+          iyy="0.0056" iyz="0"
+          izz="0.0056"
       />
     </inertial>
 
-    <collision name='pillar_collision'>
+    <collision name='omni_wheel_collision'>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <cylinder radius="0.025" length="0.1"/>
+        <sphere radius="0.02"/>
       </geometry>
     </collision>
 
-    <visual name='pillar_visual'>
+    <visual name='omni_wheel_visual'>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <cylinder radius="0.025" length="0.1"/>
+        <sphere radius="0.02"/>
       </geometry>
+      <material name="black"/>
     </visual>
   </link>
-
+  
   <link name='camera_link'>
     <pose>0 0 0 0 0 0</pose>
 
@@ -153,37 +160,37 @@
   </link>
 
   <joint type="continuous" name="left_wheel_hinge">
-    <origin xyz="-0.107266 -0.242145 0.5" rpy=" 0 -1.5707 1.5707"/>
+    <origin xyz="-0.100266 -0.242145 0.03" rpy=" 0 -1.5707 1.5707"/>
     <child link="left_wheel"/>
     <parent link="robot_body"/>
-    <axis xyz="0 0 1" rpy="0 0 0"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
   <joint type="continuous" name="right_wheel_hinge">
-    <origin xyz="-0.107266 0.242145 0.5" rpy=" 0 -1.5707 1.5707"/>
+    <origin xyz="-0.100266 0.242145 0.03" rpy=" 0 -1.5707 1.5707"/>
     <child link="right_wheel"/>
     <parent link="robot_body"/>
-    <axis xyz="0 0 1" rpy="0 0 0"/>
-    <limit effort="10000" velocity="1000"/>
-    <dynamics damping="1.0" friction="1.0"/>
-  </joint>
-
-  <joint type="fixed" name="camera_pillar_hinge">
-    <origin xyz="-0.194581 0.000743 0.612654" rpy="-0.002050 -0.088042 -0.023313"/>
-    <child link="camera_pillar"/>
-    <parent link="robot_body"/>
-    <axis xyz="0 0 1" rpy="0 0 0"/>
+    <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
   <joint type="fixed" name="camera_link_hinge">
-    <origin xyz="-0.020635 0.006883 0.064051" rpy="-1.57 0 1.57"/>
+    <origin xyz="-0.300635 0.0 0.05051" rpy="-1.57 0 1.57"/>
     <child link="camera_link"/>
-    <parent link="camera_pillar"/>
+    <parent link="robot_body"/>
     <axis xyz="0 0 -1" rpy="0 0 0"/>
+    <limit effort="10000" velocity="1000"/>
+    <dynamics damping="1.0" friction="1.0"/>
+  </joint>
+  
+  <joint type="continuous" name="omni_wheel_hinge">
+    <origin xyz="0.233497 -0.000865 0" rpy="0.000212 -0.118296 -0.001802"/>
+    <child link="omni_wheel"/>
+    <parent link="robot_body"/>
+    <axis xyz="0 0 1" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
@@ -196,8 +203,8 @@
     <material>Gazebo/Black</material>
   </gazebo>
 
-  <gazebo reference="camera_pillar">
-    <material>Gazebo/Red</material>
+  <gazebo reference="omni_wheel">
+    <material>Gazebo/Black</material>
   </gazebo>
 
 </robot>

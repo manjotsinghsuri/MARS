@@ -31,6 +31,6 @@
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
   <!-- Launching rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
+  <node pkg="rviz" type="rviz" name="rviz" respawn="false" args="-d /home/manjot/mars_ws/src/MARS/robot/config/rviz_config.rviz"/>
 
 </launch>

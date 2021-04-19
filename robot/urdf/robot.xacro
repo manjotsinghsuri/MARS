@@ -1,7 +1,9 @@
 <?xml version='1.0'?>
 
 <robot name="name" xmlns:xacro="http://www.ros.org/wiki/xacro">
-  
+
+  <xacro:include filename="$(find robot)/urdf/robot.gazebo" />
+
   <material name="black">
     <color rgba="0 0 0 1"/>
   </material>
@@ -163,7 +165,7 @@
     <origin xyz="-0.100266 -0.242145 0.03" rpy=" 0 -1.5707 1.5707"/>
     <child link="left_wheel"/>
     <parent link="robot_body"/>
-    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
@@ -172,7 +174,7 @@
     <origin xyz="-0.100266 0.242145 0.03" rpy=" 0 -1.5707 1.5707"/>
     <child link="right_wheel"/>
     <parent link="robot_body"/>
-    <axis xyz="0 1 0" rpy="0 0 0"/>
+    <axis xyz="0 0 1" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>
@@ -181,7 +183,7 @@
     <origin xyz="-0.300635 0.0 0.05051" rpy="-1.57 0 1.57"/>
     <child link="camera_link"/>
     <parent link="robot_body"/>
-    <axis xyz="0 0 -1" rpy="0 0 0"/>
+    <axis xyz="0 0 1" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
     <dynamics damping="1.0" friction="1.0"/>
   </joint>

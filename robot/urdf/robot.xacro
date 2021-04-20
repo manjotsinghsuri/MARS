@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 
-<robot name="name" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find robot)/urdf/robot.gazebo" />
 
@@ -140,23 +140,23 @@
       <mass value="0.2"/>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <inertia
-          ixx="0.0001979" ixy="0" ixz="0"
-          iyy="0.0001979" iyz="0"
-          izz="0.0000625"
+          ixx="0.000196" ixy="0" ixz="0"
+          iyy="0.0000125875" iyz="0"
+          izz="0.0002044"
       />
     </inertial>
 
     <collision name='camera_link_collision'>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot/meshes/intel_realsense_camera.dae"/>
+        <mesh filename="package://robot/meshes/tracking_camera.dae"/>
       </geometry>
     </collision>
 
     <visual name='camera_link_visual'>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://robot/meshes/intel_realsense_camera.dae"/>
+        <mesh filename="package://robot/meshes/tracking_camera.dae"/>
       </geometry>
     </visual>
   </link>

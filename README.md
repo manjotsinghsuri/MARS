@@ -2,7 +2,7 @@
 
 # For launching the robot in gazebo follow the following steps
 
-## First create a workspace and src folder inside the workspace
+## First create a workspace and src folder inside it
 
 * `mkdir catkin_ws`
 * `cd catkin_ws`

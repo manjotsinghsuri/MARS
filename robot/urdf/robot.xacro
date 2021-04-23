@@ -180,7 +180,7 @@
   </joint>
 
   <joint type="fixed" name="camera_link_hinge">
-    <origin xyz="-0.300635 0.0 0.05051" rpy="-1.57 0 1.57"/>
+    <origin xyz="-0.285635 0.0 0.05051" rpy="-1.57 0 1.57"/>
     <child link="camera_link"/>
     <parent link="robot_body"/>
     <axis xyz="0 0 1" rpy="0 0 0"/>
